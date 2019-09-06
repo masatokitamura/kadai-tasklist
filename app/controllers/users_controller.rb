@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_user_logged_in, only: [:index, :show]
   def new
     @user = User.new
   end
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
   
   def destroy
     session[:user_id] =nil
-    flash[:success] ="ログアウトしました。
+    flash[:success] ="ログアウトしました。"
   　redirect_to root_url　  
   end
 
